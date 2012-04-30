@@ -11,6 +11,8 @@ module OmniAuth
         :site => 'http://graph.renren.com'
       }
 
+      option :display, "page"
+
       uid { raw_info['uid'] }
 
       info do
@@ -45,8 +47,10 @@ module OmniAuth
 
       #http://wiki.dev.renren.com/wiki/%E6%9D%83%E9%99%90%E5%88%97%E8%A1%A8
       def request_phase
-        options[:scope] ||= 'publish_feed'
-        super
+        #options[:display] ||= "touch"
+        #options[:scope] ||= "status_update"
+        #super
+        redirect client.auth_code.authorize_url({:redirect_uri => callback_url, :display => options["display"], :scope => "status_update publish_feed"}.merge(options.authorize_params))
       end
 
       def build_access_token
