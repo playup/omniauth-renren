@@ -13,7 +13,7 @@ Gem::Specification.new do |s|
 
   s.rubyforge_project = "omniauth-renren"
   s.add_dependency 'omniauth', '~> 1.0.0.rc2'
-  s.add_dependency 'omniauth-oauth2', '~> 1.0.0.rc2'
+  s.add_dependency 'omniauth-oauth2', '~> 1.0', '> 1.0.0.rc2'
 
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
